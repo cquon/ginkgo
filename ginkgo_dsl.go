@@ -151,6 +151,7 @@ type GinkgoTestDescription struct {
 	LineNumber int
 
 	Failed   bool
+	State    types.SpecState
 	Duration time.Duration
 }
 
@@ -171,6 +172,7 @@ func CurrentGinkgoTestDescription() GinkgoTestDescription {
 		FileName:       subjectCodeLocation.FileName,
 		LineNumber:     subjectCodeLocation.LineNumber,
 		Failed:         summary.HasFailureState(),
+		State:          summary.State,
 		Duration:       summary.RunTime,
 	}
 }
